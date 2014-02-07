@@ -7,6 +7,18 @@
 //
 
 #import "RITAppDelegate.h"
+#import "RITGovernment.h"
+#import "RITDoctor.h"
+#import "RITPensioner.h"
+#import "RITBusinessman.h"
+
+@interface RITAppDelegate ()
+@property (strong, nonatomic) RITGovernment* government;
+@property (strong, nonatomic) RITDoctor* doctor;
+@property (strong, nonatomic) RITPensioner* pensioner;
+@property (strong, nonatomic) RITBusinessman* businessman;
+
+@end
 
 @implementation RITAppDelegate
 
@@ -16,6 +28,54 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
+    // create government object
+    self.government  = [[RITGovernment alloc] init];
+    
+    // create human objects
+    self.doctor    = [[RITDoctor alloc] init];
+    self.pensioner = [[RITPensioner alloc] init];
+    self.businessman = [[RITBusinessman alloc] init];
+    
+    // set initial values
+    self.doctor.name       = @"Doctor01";
+    self.pensioner.name    = @"Pensioner01";
+    self.businessman.name    = @"Businessman";
+    self.doctor.salary = self.government.salary;
+    self.doctor.averagePrice = self.government.averagePrice;
+    self.pensioner.pension = self.government.pension;
+    self.pensioner.averagePrice = self.government.averagePrice;
+    self.businessman.taxLevel = self.government.taxLevel;
+    self.businessman.averagePrice = self.government.averagePrice;
+    
+    // change government options #01
+    NSLog(@"Government options: 2011 year");
+    self.government.taxLevel        = 5.5f;
+    self.government.salary          = 1100;
+    self.government.averagePrice    = 15;
+    self.government.pension         = 550;
+    NSLog(@"\n");
+    
+    // change government options #02
+    NSLog(@"Government options: 2012 year");
+    self.government.salary          = 1050;
+    self.government.averagePrice    = 18;
+    self.government.pension         = 555;
+    self.government.taxLevel        = 5.8f;
+    NSLog(@"\n");
+    
+    // change government options #03
+    NSLog(@"Government options: 2013 year");
+    self.government.salary          = 1150;
+    self.government.taxLevel        = 6.3f;
+    NSLog(@"\n");
+    
+    // change government options #04
+    NSLog(@"Government options: 2014 year");
+    self.government.salary          = 900;
+    self.government.taxLevel        = 6.5f;
+    NSLog(@"\n");
+    
     return YES;
 }
 
